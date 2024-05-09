@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- /.content-header -->
+    <div class="col-md-12">
+        <div class="card card-dark">
+            <div class="card-header border-0">
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Mijoz qo'shish</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table" style="text-align: center;">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 15px">Ism</th>
+                            <th scope="col" style="width: 255px; text-align: center;">Dokon</th>
+                            <th scope="col" style="text-align: center;">Telefon raqami</th>
+                            <th scope="col" style="text-align: center;">Manzili</th>
+                            <th scope="col" style="text-align: center;">Qarz</th>
+                             <th scope="col" style="text-align: center;">Tarqatuvchi</th>
+                            <th scope="col" style="text-align: center;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for mijoz in mijozlar%}
+                        <tr>
+                            <th scope="row"></th>
+                            <td>{{mijoz.ism}}</td>
+                            <td>{{mijoz.dokon}}</td>
+                            <td>{{mijoz.tel}}</td>
+                            <td>{{mijoz.manzil}}</td>
+                            <td>{{mijoz.qarz}}</td>
+                            <td>{{mijoz.tarqatuvchi.first_name}}</td>
+                            <td>
+                                <a href="#">
+                                    <button type="submit" class="btn btn-danger" data-toggle="modal">Tahrirlash</button>
+                                </a>
+                                <a href="#">
+                                    <button type="submit" class="btn btn-danger" data-toggle="modal">O'chirish</button>
+                                </a>
+                            </td>
+                        </tr>
+                    {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+    
+          <!-- Modal Header -->
+          <div class="modal-header bg-dark">
+            <h4 class="modal-title">Yangi mijoz</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+    
+          <!-- Modal body -->
+          <form action="#" id="new-product-form" >
+            <div class="modal-body">
+              <label for="new-product-name">FIO:</label>
+              <input type="text" name="client_name" placeholder="Mijoz to'liq ismi..." id="new-product-name" class="form-control" required>
+                <br>
+              <label for="new-product-name">Do'kon nomi:</label>
+              <input type="text" name="client_shop" placeholder="Do'kon nomi..." id="new-product-brend" class="form-control" required>
+              <br>
+              <label for="new-product-name">Telefon raqami:</label>
+              <input type="text" name="client_phone" placeholder="Telefon raqami..." id="new-product-price" class="form-control" required>
+              <br>
+              <label for="new-product-name">Manzili:</label>
+              <input type="text" name="client_address" placeholder="Mijoz manzili..." id="new-product-amount" class="form-control" required>
+              <br>
+            </div>
+    
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Qo`shish</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Yopish</button>
+        </div>
+      </form>
+    
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
